@@ -40,9 +40,12 @@ class ticket_booking_system:
         total_price = (self.adult_quantity * self.adult_price) + (self.child_quantity * self.child_price) + (self.student_quantity * self.student_price)
 
         if self.adult_quantity + self.child_quantity + self.student_quantity > 100:
-            self.total_price_output_label.config(text = 'Erorr: Only 100 tickets are available.')
+            self.total_price_output_label.config(text = 'Error: Only 100 tickets are available.')
         else:
             self.total_price_output_label.config(text = f'Total Price: ${total_price}')
+        
+        if self.adult_quantity < 0 or self.child_quantity < 0 or self.student_quantity < 0:
+            self.total_price_output_label.config(text = 'Error: Ticket quantities cannot be negative. Please try again.')
 
 root = tk.Tk()
 booking_system = ticket_booking_system(root)
